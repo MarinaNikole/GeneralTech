@@ -38,11 +38,13 @@ SELECT D.amount, U.username, S.title AS Stream_title
     FROM donations as D 
     LEFT JOIN users AS U ON D.donator_id=U.user_id
     LEFT JOIN streams AS S ON D.stream_id=S.stream_id
+    ORDER BY D.amount DESC
 
 --3(Второй вариант запроса) Вывести список пожертвований в порядке убывания размера (проекция: размерпожертвования, имя донатара, название_стрима)  
     SELECT D.amount, U.username, S.title AS Stream_title
     FROM donations as D 
     JOIN users AS U ON D.donator_id=U.user_id
     LEFT JOIN streams AS S USING (stream_id)
+    ORDER BY D.amount DESC
 
 
