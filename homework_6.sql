@@ -6,6 +6,7 @@ WHERE NOT Country IN ("China", "UK")
 
 
 --2. Вывести среднюю/MAX/MIN стоимости и ко-во товаров из категорий 3 и 5
+SELECT 
 ROUND(AVG (Price), 2)  AS Average_price,
 MAX(Price) AS Maximum_price,
 MIN(Price) AS Minimum_price,
@@ -32,7 +33,7 @@ WHERE Categories.CategoryName="Beverages"
 
 --5. Вывести сумму, на которую было отправлено товаров клиентам в USA
 SELECT 
-SUM(Products.Price) 
+SUM(Products.Price*OrderDetails.Quantity) AS total_price_for_USA_customers
 FROM Customers
 JOIN Orders ON Customers.CustomerID=Orders.CustomerID
 JOIN OrderDetails ON Orders.OrderID=OrderDetails.OrderID
